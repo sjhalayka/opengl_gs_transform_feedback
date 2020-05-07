@@ -71,7 +71,7 @@ int main(int argc, char **argv)
 	const GLuint components_per_position = 4;
 	const GLuint components_per_vertex = components_per_position;
 
-	static GLuint point_buffer;
+	GLuint point_buffer;
 
 	glDeleteBuffers(1, &point_buffer);
 	glGenBuffers(1, &point_buffer);
