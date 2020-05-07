@@ -53,7 +53,7 @@ int main(int argc, char **argv)
 
 	if (false == g0_mc_shader.init("points.vs.glsl", "points.gs.glsl"))
 	{
-		cout << "Couldn't load Marching Cubes shaders" << endl;
+		cout << "Couldn't load shaders" << endl;
 
 		return false;
 	}
