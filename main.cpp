@@ -21,7 +21,7 @@ int main(int argc, char **argv)
 	glutInitWindowSize(10, 10);
 	glutInitWindowPosition(0, 0);
 
-	GLint win_id = glutCreateWindow("Julia 4D 3");
+	GLint win_id = glutCreateWindow("GS Test");
 
 	if (GLEW_OK != glewInit())
 	{
@@ -73,7 +73,6 @@ int main(int argc, char **argv)
 
 	GLuint point_buffer;
 
-	glDeleteBuffers(1, &point_buffer);
 	glGenBuffers(1, &point_buffer);
 
 	const GLuint num_vertices = static_cast<GLuint>(points_vertex_data.size()) / components_per_vertex;
@@ -95,9 +94,13 @@ int main(int argc, char **argv)
 
 	glBeginQuery(GL_PRIMITIVES_GENERATED, query);
 
+	glEnable(GL_RASTERIZER_DISCARD);
+
 	glBeginTransformFeedback(GL_TRIANGLES);
 		glDrawArrays(GL_POINTS, 0, num_vertices);
 	glEndTransformFeedback();
+
+	glDisable(GL_RASTERIZER_DISCARD);
 
 	glEndQuery(GL_PRIMITIVES_GENERATED);
 
