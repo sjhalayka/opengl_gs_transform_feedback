@@ -71,14 +71,14 @@ int main(int argc, char **argv)
 	const GLuint components_per_position = 4;
 	const GLuint components_per_vertex = components_per_position;
 
-	static GLuint triangle_buffer;
+	static GLuint point_buffer;
 
-	glDeleteBuffers(1, &triangle_buffer);
-	glGenBuffers(1, &triangle_buffer);
+	glDeleteBuffers(1, &point_buffer);
+	glGenBuffers(1, &point_buffer);
 
 	const GLuint num_vertices = static_cast<GLuint>(points_vertex_data.size()) / components_per_vertex;
 
-	glBindBuffer(GL_ARRAY_BUFFER, triangle_buffer);
+	glBindBuffer(GL_ARRAY_BUFFER, point_buffer);
 	glBufferData(GL_ARRAY_BUFFER, points_vertex_data.size() * sizeof(GLfloat), &points_vertex_data[0], GL_DYNAMIC_DRAW);
 
 	glEnableVertexAttribArray(glGetAttribLocation(g0_mc_shader.get_program(), "position"));
