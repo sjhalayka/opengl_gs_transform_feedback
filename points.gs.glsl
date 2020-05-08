@@ -11,15 +11,18 @@ in VS_OUT
 
 void main(void)
 {
-	vec4 vertex0 = vec4(1, 2, 3, 0); 
-	vec4 vertex1 = vec4(4, 5, 6, 0);    
+    vec4 vertex0 = vec4(1, 2, 3, 0); 
+    vec4 vertex1 = vec4(4, 5, 6, 0);    
     vec4 vertex2 = vec4(7, 8, 9, 0);
 
-	gl_Position = vertex0;
+    gl_Position = vertex0;
     EmitVertex();
+    
     gl_Position = vertex1;
     EmitVertex();
+    
     gl_Position = vertex2;
     EmitVertex();
+    
     EndPrimitive();
 }  
