@@ -60,12 +60,12 @@ int main(int argc, char **argv)
 	g0_mc_shader.use_program();
 
 	// Make enough data for one point
-	vector<float> points_vertex_data;
+	vector<float> point_vertex_data;
 
-	points_vertex_data.push_back(0);
-	points_vertex_data.push_back(0);
-	points_vertex_data.push_back(0);
-	points_vertex_data.push_back(0);
+	point_vertex_data.push_back(0);
+	point_vertex_data.push_back(0);
+	point_vertex_data.push_back(0);
+	point_vertex_data.push_back(0);
 
 	const GLuint components_per_position = 4;
 	const GLuint components_per_vertex = components_per_position;
@@ -74,10 +74,10 @@ int main(int argc, char **argv)
 
 	glGenBuffers(1, &point_buffer);
 
-	const GLuint num_vertices = static_cast<GLuint>(points_vertex_data.size()) / components_per_vertex;
+	const GLuint num_vertices = static_cast<GLuint>(point_vertex_data.size()) / components_per_vertex;
 
 	glBindBuffer(GL_ARRAY_BUFFER, point_buffer);
-	glBufferData(GL_ARRAY_BUFFER, points_vertex_data.size() * sizeof(GLfloat), &points_vertex_data[0], GL_DYNAMIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, point_vertex_data.size() * sizeof(GLfloat), &point_vertex_data[0], GL_DYNAMIC_DRAW);
 
 	glEnableVertexAttribArray(glGetAttribLocation(g0_mc_shader.get_program(), "position"));
 	glVertexAttribPointer(glGetAttribLocation(g0_mc_shader.get_program(), "position"),
@@ -86,6 +86,7 @@ int main(int argc, char **argv)
 		GL_FALSE,
 		components_per_vertex * sizeof(GLfloat),
 		0);
+
 
 
 
@@ -115,6 +116,13 @@ int main(int argc, char **argv)
 
 	// how to set up transform feedback?
 
+
+
+
+	glDeleteQueries(1, &query);
+	glDeleteBuffers(1, &point_buffer);
+
+	glutDestroyWindow(win_id);
 
 	return 1;
 }
