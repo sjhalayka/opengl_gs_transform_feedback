@@ -116,7 +116,7 @@ int main(int argc, char **argv)
 	// how to set up transform feedback?
 
 	// how to read back the triangle vertex data to a CPU buffer?
-	// e.g. 1,2,3 ... 4,5,6... 7,8,9 from geometry shader
+	// e.g. How do I get the data 1,2,3 ... 4,5,6... 7,8,9 ... etc., from geometry shader?
 
 
 
