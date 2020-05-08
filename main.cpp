@@ -89,7 +89,6 @@ int main(int argc, char **argv)
 
 
 
-
 	// how to set up transform feedback?
 
 	GLuint query;
@@ -116,12 +115,13 @@ int main(int argc, char **argv)
 
 	// how to set up transform feedback?
 
+	// how to read back the triangle vertex data to a CPU buffer?
+	// e.g. 1,2,3 ... 4,5,6... 7,8,9 from geometry shader
 
 
 
 	glDeleteQueries(1, &query);
 	glDeleteBuffers(1, &point_buffer);
-
 	glutDestroyWindow(win_id);
 
 	return 1;
