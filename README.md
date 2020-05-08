@@ -1,1 +1,1 @@
-# opengl_gs_transform_feedback
+Code that uses a geometry shader to produce 2 triangles.
