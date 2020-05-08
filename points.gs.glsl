@@ -23,6 +23,22 @@ void main(void)
     
     gl_Position = vertex2;
     EmitVertex();
-    
+
     EndPrimitive();
-}  
+
+
+    vertex0 = vec4(10, 11, 12, 0); 
+    vertex1 = vec4(13, 14, 15, 0);    
+    vertex2 = vec4(16, 17, 18, 0);
+
+    gl_Position = vertex0;
+    EmitVertex();
+    
+    gl_Position = vertex1;
+    EmitVertex();
+    
+    gl_Position = vertex2;
+    EmitVertex();
+
+    EndPrimitive();
+}
