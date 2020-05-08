@@ -57,7 +57,7 @@ int main(int argc, char **argv)
 		return 0;
 	}
 
-	glUseProgram(g0_mc_shader.get_program());
+	g0_mc_shader.use_program();
 
 	// Make enough data for one point
 	vector<float> points_vertex_data;
