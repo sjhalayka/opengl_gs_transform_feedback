@@ -2,7 +2,7 @@
 
 layout (points) in;
 layout (triangle_strip) out;
-layout (max_vertices = 15) out;
+layout (max_vertices = 6) out;
 
 in VS_OUT
 {
