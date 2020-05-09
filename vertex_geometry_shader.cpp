@@ -108,10 +108,14 @@ bool vertex_geometry_shader::init(const char* vertex_shader_filename, const char
 	return true;
 }
 
+
+
+#define _CRT_SECURE_NO_WARNINGS
+#pragma warning(disable:4996)
+
 const GLchar* vertex_geometry_shader::read_text_file(const char* filename)
 {
-	FILE* infile;// =
-	fopen_s(&infile, filename, "rb");
+	FILE* infile = fopen(filename, "rb");
 
 	if (!infile)
 	{
