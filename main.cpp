@@ -64,7 +64,7 @@ int main(int argc, char **argv)
 
 	g0_mc_shader.use_program();
 
-	// Make enough data for one point
+	// Make enough data for 1 point
 	vector<float> point_vertex_data;
 
 	point_vertex_data.push_back(0);
