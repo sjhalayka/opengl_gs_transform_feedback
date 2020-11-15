@@ -1,7 +1,7 @@
 #include "vertex_geometry_shader.h"
 
 
-bool vertex_geometry_shader::init(const char* vertex_shader_filename, const char* geometry_shader_filename)
+bool vertex_geometry_shader::init(const char* vertex_shader_filename, const char* geometry_shader_filename, string varying_name)
 {
 	program = glCreateProgram();
 
@@ -30,7 +30,7 @@ bool vertex_geometry_shader::init(const char* vertex_shader_filename, const char
 
 		GLchar* log = new GLchar[len + 1];
 		glGetShaderInfoLog(vertex_shader, len, &len, log);
-		cerr << "Shader compilation failed: " << log << endl;
+		cerr << "Vertex shader compilation failed: " << log << endl;
 		delete[] log;
 
 		glDeleteProgram(program);
@@ -67,7 +67,7 @@ bool vertex_geometry_shader::init(const char* vertex_shader_filename, const char
 
 		GLchar* log = new GLchar[len + 1];
 		glGetShaderInfoLog(geometry_shader, len, &len, log);
-		cerr << "Shader compilation failed: " << log << endl;
+		cerr << "Geometry shader compilation failed: " << log << endl;
 		delete[] log;
 
 		glDeleteProgram(program);
@@ -78,6 +78,13 @@ bool vertex_geometry_shader::init(const char* vertex_shader_filename, const char
 	}
 
 	glAttachShader(program, geometry_shader);
+
+
+	if (varying_name != "")
+	{
+		const GLchar* feedbackVaryings[] = { varying_name.c_str() };
+		glTransformFeedbackVaryings(program, 1, feedbackVaryings, GL_INTERLEAVED_ATTRIBS);
+	}
 
 
 

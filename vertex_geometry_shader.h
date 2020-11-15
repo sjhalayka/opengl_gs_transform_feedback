@@ -9,7 +9,6 @@
 using namespace std;
 
 
-
 class vertex_geometry_shader
 {
 public:
@@ -17,7 +16,7 @@ public:
 	vertex_geometry_shader(void) { program = 0; }
 	~vertex_geometry_shader(void) { if (program != 0) { glDeleteProgram(program); } }
 
-	bool init(const char* vertex_shader_filename, const char* geometry_shader_filename);
+	bool init(const char* vertex_shader_filename, const char* geometry_shader_filename, string varying_name);
 	void use_program(void);
 	GLuint get_program(void) { return program; };
 

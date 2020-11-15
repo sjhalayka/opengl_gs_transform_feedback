@@ -4,6 +4,8 @@ layout (points) in;
 layout (triangle_strip) out;
 layout (max_vertices = 6) out;
 
+out vec3 vert;
+
 in VS_OUT
 {
     vec4 position;
@@ -11,33 +13,33 @@ in VS_OUT
 
 void main(void)
 {
-    vec4 vertex0 = vec4(1, 2, 3, 0); 
-    vec4 vertex1 = vec4(4, 5, 6, 0);    
-    vec4 vertex2 = vec4(7, 8, 9, 0);
+    vec3 vertex0 = vec3(1, 2, 3); 
+    vec3 vertex1 = vec3(4, 5, 6);    
+    vec3 vertex2 = vec3(7, 8, 9);
 
-    gl_Position = vertex0;
+    vert = vertex0;
     EmitVertex();
     
-    gl_Position = vertex1;
+    vert = vertex1;
     EmitVertex();
     
-    gl_Position = vertex2;
+    vert = vertex2;
     EmitVertex();
 
     EndPrimitive();
 
 
-    vertex0 = vec4(10, 11, 12, 0); 
-    vertex1 = vec4(13, 14, 15, 0);    
-    vertex2 = vec4(16, 17, 18, 0);
+    vertex0 = vec3(10, 11, 12); 
+    vertex1 = vec3(13, 14, 15);    
+    vertex2 = vec3(16, 17, 18);
 
-    gl_Position = vertex0;
+    vert = vertex0;
     EmitVertex();
     
-    gl_Position = vertex1;
+    vert = vertex1;
     EmitVertex();
     
-    gl_Position = vertex2;
+    vert = vertex2;
     EmitVertex();
 
     EndPrimitive();
