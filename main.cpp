@@ -106,6 +106,7 @@ int main(int argc, char **argv)
 	size_t num_vertices_per_triangle = 3;
 	size_t num_floats_per_vertex = 3;
 
+	// Allocate enough for the maximum number of triangles
 	GLuint tbo;
 	glGenBuffers(1, &tbo);
 	glBindBuffer(GL_ARRAY_BUFFER, tbo);
@@ -132,7 +133,8 @@ int main(int argc, char **argv)
 	GLuint primitives;
 	glGetQueryObjectuiv(query, GL_QUERY_RESULT, &primitives);
 
-	vector<GLfloat> feedback(num_vertices * max_triangles_per_geometry_shader * num_vertices_per_triangle * num_floats_per_vertex);
+	// Read back actual number of triangles (in case it's less than two triangles)
+	vector<GLfloat> feedback(primitives * num_vertices_per_triangle * num_floats_per_vertex);
 	glGetBufferSubData(GL_TRANSFORM_FEEDBACK_BUFFER, 0, sizeof(GLfloat) * feedback.size(), &feedback[0]);
 
 	glDeleteQueries(1, &query);
